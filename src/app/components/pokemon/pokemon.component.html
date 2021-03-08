@@ -1,0 +1,43 @@
+<div class="container">
+  <form class="form-inline">
+    <div class="buscador">
+      <input placeholder="Bullbasaur, Charizard..." type="text" (keyup)="buscarPokemon(buscar.value)" #buscar><span class="barra"  ></span>
+
+    </div>
+    <button class="btn btn-secondary posicion" (click)="buscarPokemon(buscar.value)">Buscar.</button>
+  </form>
+  <h3>Mis resultados</h3>
+
+</div>
+<div *ngFor="let poke of pokemones" clase="contener">
+  <div class="card {{poke.types[0].type.name}}">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 centrar contenido">
+        <img [src]="poke.sprites.front_default">
+        <img [src]="poke.sprites.back_default">
+        <img [src]="poke.sprites.front_shiny">
+        <img [src]="poke.sprites.back_shiny">
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <div class="card-body">
+          <h5 class="card-title"><strong>{{poke.name | uppercase}}</strong></h5>
+          <h6><strong>Tipo:</strong> {{poke.types[0].type.name}}</h6>
+          <h6><strong>Movimientos:</strong></h6>
+          <div class="primera">
+            <p>{{poke.moves[0].move.name}}</p>,
+            <p>{{poke.moves[1].move.name}}</p>
+          </div>
+          <div class=" segunda">
+            <p>{{poke.moves[2].move.name}}</p>,<p> {{poke.moves[3].move.name}}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <button class="btn btn-outline-secondary" (click)="getPokemonsAtras(direccionAnterior)">Atras</button>
+  {{contador}}
+  <button class="btn btn-secondary"(click)="getPokemonsSiguientes(direccionSiguiente)">Siguiente</button>
+</div>
