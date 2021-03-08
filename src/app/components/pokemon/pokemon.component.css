@@ -79,6 +79,10 @@ h3 {
   display: inline-block;
 }
 
+.paginas {
+  text-align: center;
+}
+
 .fighting {
   border-color: #757575;
 }

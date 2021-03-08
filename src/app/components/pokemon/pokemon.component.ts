@@ -86,7 +86,7 @@ export class PokemonComponent implements OnInit {
   buscarPokemon(valor: string) {
     if (valor.length > 0) {
       this.pokemones = [];
-      this.pokemonService.buscarPokemoNombre(valor).subscribe(
+      this.pokemonService.buscarPokemoNombre(valor.toLowerCase()).subscribe(
         (res: any) => {
           this.pokemones.push(res);
         },
