@@ -9,14 +9,12 @@
   <h3>Mis resultados</h3>
 
 </div>
-<div  clase="contener" *ngFor="let poke of pokemones">
+<div clase="contener" *ngFor="let poke of pokemones">
   <div class="card {{poke.types[0].type.name}}">
     <div class="row">
       <div class="col-sm-12 col-md-8 centrar contenido">
         <img [src]="poke.sprites.front_default">
-        <img [src]="poke.sprites.back_default">
         <img [src]="poke.sprites.front_shiny">
-        <img [src]="poke.sprites.back_shiny">
       </div>
       <div class="col-sm-12 col-md-3">
         <div class="card-body">
