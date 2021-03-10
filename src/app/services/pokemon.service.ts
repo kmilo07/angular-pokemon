@@ -22,4 +22,8 @@ export class PokemonService {
   buscarPokemonesDireccion(value: string): Observable<any> {
     return this.http.get<any>(value);
   }
+
+  buscarPoderesPokemones(value: string): Observable<any> {
+    return this.http.get<any>(value);
+  }
 }

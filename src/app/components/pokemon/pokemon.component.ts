@@ -21,15 +21,8 @@ export class PokemonComponent implements OnInit {
     this.pokemonService.buscarPokemones().subscribe(
       (res: any) => {
         this.direccionSiguiente = res.next;
-        res.results.forEach(element => {
-          this.pokemonService
-            .buscarPokemoNombre(element.name)
-            .subscribe((repuesta: any) => {
-              this.pokemones.push(repuesta);
-            });
-        });
-      },
-      error => {}
+        this.getPokemonconTipo(res);
+      }
     );
   }
 
@@ -40,13 +33,7 @@ export class PokemonComponent implements OnInit {
       (res: any) => {
         this.direccionAnterior = res.previous;
         this.direccionSiguiente = res.next;
-        res.results.forEach(element => {
-          this.pokemonService
-            .buscarPokemoNombre(element.name)
-            .subscribe((repuesta: any) => {
-              this.pokemones.push(repuesta);
-            });
-        });
+        this.getPokemonconTipo(res);
       },
       error => {}
     );
@@ -62,32 +49,58 @@ export class PokemonComponent implements OnInit {
       (res: any) => {
         this.direccionAnterior = res.previous;
         this.direccionSiguiente = res.next;
-        res.results.forEach(element => {
-          this.pokemonService
-            .buscarPokemoNombre(element.name)
-            .subscribe((repuesta: any) => {
-              this.pokemones.push(repuesta);
-            });
-        });
+        this.getPokemonconTipo(res);
       },
       error => {}
     );
   }
 
-  getTipo(value: string) {
-    this.pokemonService.buscarTipo(value).subscribe(
-      res => {
-        console.log(res);
-        return res;
-      },
-      err => {}
-    );
+  getPokemonconTipo(res: any) {
+    res.results.forEach(element => {
+          this.pokemonService
+            .buscarPokemoNombre(element.name)
+            .subscribe((repuesta: any) => {
+              this.pokemonService
+                .buscarTipo(repuesta.types[0].type.url)
+                .subscribe((respuesta: any) => {
+                  repuesta.types[0].type.name = respuesta.names[4].name;
+                  if(repuesta.types[1]?.type.url){
+                    this.pokemonService.buscarTipo(repuesta.types[1]?.type.url)
+                    .subscribe((respuesta: any)=>{
+                      repuesta.types[1].type.name = respuesta.names[4].name;
+                    })
+                  }
+                });
+              this.pokemones.push(repuesta);
+            });
+    })
+  }
+
+  getPoderes(res: any){
+    this.pokemonService.buscarPoderesPokemones(res)
+    .subscribe((respuesta: any)=>{
+        this.pokemonService.buscarPoderesPokemones(res.moves[0].move.name);
+    })
+  }
+
+  getTipoPorBusqueda(res: any){
+    this.pokemonService.buscarTipo(res.types[0].type.url)
+          .subscribe((respuesta: any)=>{
+            res.types[0].type.name = respuesta.names[4].name;
+            if(res.types[1]?.type.url){
+              this.pokemonService.buscarTipo(res.types[1]?.type.url)
+                    .subscribe((respuesta: any)=>{
+                      res.types[1].type.name = respuesta.names[4].name;
+                    })
+            }
+          });
   }
   buscarPokemon(valor: string) {
     if (valor.length > 0) {
       this.pokemones = [];
       this.pokemonService.buscarPokemoNombre(valor.toLowerCase()).subscribe(
         (res: any) => {
+          this.getTipoPorBusqueda(res);
           this.pokemones.push(res);
         },
         err => {

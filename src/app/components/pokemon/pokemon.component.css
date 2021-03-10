@@ -83,60 +83,57 @@ h3 {
   text-align: center;
 }
 
-.fighting {
+.Lucha {
   border-color: #757575;
 }
-.flying {
+.Volador {
   border-color: #4fc3f7;
 }
-.poison {
+.Veneno {
   border-color: #6a1b9a;
 }
-.ground {
+.Tierra {
   border-color: #5d4037;
 }
-.rock {
+.Roca {
   border-color: #424242;
 }
-.bug {
+.Bicho {
   border-color: #9ccc65;
 }
-.ghost {
+.Fantasma {
   border-color: #512da8;
 }
-.steel {
+.Acero {
   border-color: #bdbdbd;
 }
-.fire {
+.Fuego {
   border-color: #b71c1c;
 }
-.water {
+.Agua {
   border-color: #406de7;
 }
-.grass {
+.Planta {
   border-color: #2e7d32;
 }
-.electric {
+.Eléctrico {
   border-color: #fbc02d;
 }
-.psychic {
+.Psíquico {
   border-color: #ff9800;
 }
-.ice {
+.Hielo {
   border-color: #0d47a1;
 }
-.dragon {
+.Dragón {
   border-color: #aa321c;
 }
-.dark {
+.Siniestro {
   border-color: #29421f00;
 }
-.fairy {
+.Hada {
   border-color: #318644b6;
 }
-.unknown {
-  border-color: #37474f;
-}
-.shadow {
+.Ombra {
   border-color: #000000;
 }
