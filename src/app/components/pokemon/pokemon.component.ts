@@ -14,6 +14,8 @@ export class PokemonComponent implements OnInit {
   public direccionAnterior: String = "";
   public direccionSiguiente: String = "";
   public contador = 1;
+  primera = 0;
+  entrada;
   
   constructor(private pokemonService: PokemonService) {}
   ngOnInit() {
@@ -44,7 +46,7 @@ export class PokemonComponent implements OnInit {
   getPokemonsAtras(valor: string) {
     if (this.contador > 0) {
       this.contador--;
-    }
+    }this.pokemones = [];
 
     this.pokemones = [];
     this.pokemonService.buscarPokemonesDireccion(valor).subscribe(
@@ -106,7 +108,7 @@ export class PokemonComponent implements OnInit {
   //       this.pokemonService.buscarPoderesPokemones(respuesta.moves[0].move.url)
   //       .subscribe((respu: any) =>{
   //         respuesta.moves[0].move.name = respu.names[5].name;
-  //       })
+  //       })this.pokemones = [];
   //       return respuesta
   //   })
   // }
@@ -147,7 +149,10 @@ export class PokemonComponent implements OnInit {
   }
   buscarPokemon(valor: string) {
     if (valor.length > 0) {
-      this.pokemones = [];
+      if(this.primera==0){
+        this.pokemones = [];
+      }
+      this.primera++;
       this.pokemonService.buscarPokemoNombre(valor.toLowerCase()).subscribe(
         (res: any) => {
           this.getTipoPorBusqueda(res);
@@ -163,7 +168,9 @@ export class PokemonComponent implements OnInit {
         }
       );
     } else {
+      this.primera=0;
       this.getPokemons();
     }
+    this.entrada = "";
   }
 }
