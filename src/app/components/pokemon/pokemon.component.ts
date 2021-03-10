@@ -156,8 +156,8 @@ export class PokemonComponent implements OnInit {
         err => {
           // alert(`Pokemon ${valor} no encontrado`);
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
+            imageUrl: 'https://stackblitz.com/files/angular-brr3ur/github/kmilo07/angular-pokemon/master/src/AC7G9BAL6NI7RTTW_400x220.jpg',
+            title: '¿Quien es ese pokemon?',
             text: `El pokemon "${valor}" no se ha encontrado`
           })
         }
