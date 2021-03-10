@@ -15,7 +15,7 @@ app-home {
 }
 
 app-pokemon {
-  min-height: calc(100vh - 300px);
+  min-height: calc(100vh);
 }
 
 app-footer {

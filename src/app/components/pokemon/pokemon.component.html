@@ -1,7 +1,7 @@
 <div class="container">
   <form class="form-inline">
     <div class="buscador">
-      <input placeholder="Bullbasaur, Charizard..." type="text" (keyup)="buscarPokemon(buscar.value)" #buscar><span class="barra"  ></span>
+      <input placeholder="Bullbasaur, Charizard..." type="text" #buscar><span class="barra"  ></span>
 
     </div>
     <button class="btn btn-secondary posicion" (click)="buscarPokemon(buscar.value)">Buscar.</button>
@@ -22,11 +22,11 @@
           <h6><strong>Tipo:</strong> {{poke.types[0].type.name}} {{poke.types[1]?.type.name}}</h6>
           <h6><strong>Movimientos:</strong></h6>
           <div class="primera">
-            <p>{{poke.moves[0].move.name}} </p>
+            <p>{{poke.moves[0].move.name | ponerComa}} </p>
             <p>{{poke.moves[1]?.move.name}}</p>
           </div>
           <div class=" segunda">
-            <p>{{poke.moves[2]?.move.name}} </p>
+            <p>{{poke.moves[2]?.move.name | ponerComa}} </p>
             <p> {{poke.moves[3]?.move.name}}</p>
 
           </div>

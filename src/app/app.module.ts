@@ -9,6 +9,8 @@ import { PokemonComponent } from "./components/pokemon/pokemon.component";
 import { HomeComponent } from "./components/home/home.component";
 import { HttpClientModule } from "@angular/common/http";
 import { PokemonService } from "./services/pokemon.service";
+import Swal from "sweetalert2";
+import { PonerComaPipe } from './poner-coma.pipe';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
@@ -17,7 +19,8 @@ import { PokemonService } from "./services/pokemon.service";
     FooterComponent,
     NavbarComponent,
     PokemonComponent,
-    HomeComponent
+    HomeComponent,
+    PonerComaPipe
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]

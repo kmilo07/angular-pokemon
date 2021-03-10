@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { __await } from "tslib";
 import { PokemonService } from "../../services/pokemon.service";
+import Swal from 'sweetalert2'
 
 @Component({
   selector: "app-pokemon",
@@ -13,6 +14,7 @@ export class PokemonComponent implements OnInit {
   public direccionAnterior: String = "";
   public direccionSiguiente: String = "";
   public contador = 1;
+  
   constructor(private pokemonService: PokemonService) {}
   ngOnInit() {
     this.getPokemons();
@@ -119,6 +121,28 @@ export class PokemonComponent implements OnInit {
                       res.types[1].type.name = respuesta.names[4].name;
                     })
             }
+            this.pokemonService.buscarPoderesPokemones(res.moves[0].move.url)
+                  .subscribe((respuesta : any) =>{
+                    res.moves[0].move.name = respuesta.names[5].name;
+                  })
+                  if(res.moves[1]?.move.url){
+                    this.pokemonService.buscarPoderesPokemones(res.moves[1].move.url)
+                    .subscribe((respuesta : any) =>{
+                      res.moves[1].move.name = respuesta.names[5].name;
+                  })
+                  }
+                  if(res.moves[2]?.move.url){
+                    this.pokemonService.buscarPoderesPokemones(res.moves[2].move.url)
+                    .subscribe((respuesta : any) =>{
+                      res.moves[2].move.name = respuesta.names[5].name;
+                  })
+                  }
+                  if(res.moves[3]?.move.url){
+                    this.pokemonService.buscarPoderesPokemones(res.moves[3].move.url)
+                    .subscribe((respuesta : any) =>{
+                      res.moves[3].move.name = respuesta.names[5].name;
+                  })
+                  }
           });
   }
   buscarPokemon(valor: string) {
@@ -130,7 +154,12 @@ export class PokemonComponent implements OnInit {
           this.pokemones.push(res);
         },
         err => {
-          console.log(err);
+          // alert(`Pokemon ${valor} no encontrado`);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `El pokemon "${valor}" no se ha encontrado`
+          })
         }
       );
     } else {
