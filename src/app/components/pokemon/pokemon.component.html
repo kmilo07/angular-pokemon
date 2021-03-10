@@ -1,7 +1,7 @@
 <div class="container">
   <form class="form-inline">
     <div class="buscador">
-      <input placeholder="Bullbasaur, Charizard..." type="text" #buscar><span class="barra"  ></span>
+      <input placeholder="Bullbasaur, Charizard..." name="entrada" [(ngModel)]="entrada" type="text" #buscar><span class="barra"  ></span>
 
     </div>
     <button class="btn btn-secondary posicion" (click)="buscarPokemon(buscar.value)">Buscar.</button>
@@ -9,7 +9,7 @@
   <h3>Mis resultados</h3>
 
 </div>
-<div clase="contener" *ngFor="let poke of pokemones">
+<div clase="contener" *ngFor="let poke of pokemones.reverse()">
   <div class="card {{poke.types[0].type.name}}">
     <div class="row">
       <div class="col-sm-12 col-md-8 centrar contenido">
@@ -19,14 +19,15 @@
       <div class="col-sm-12 col-md-3">
         <div class="card-body">
           <h5 class="card-title"><strong>{{poke.name | uppercase}}</strong></h5>
-          <h6><strong>Tipo:</strong> {{poke.types[0].type.name}} {{poke.types[1]?.type.name}}</h6>
+          <h6><strong>Tipo:</strong> {{poke.types[0].type.name}} <span *ngIf="poke.types[1]?.type.name">,</span>
+            {{poke.types[1]?.type.name}}</h6>
           <h6><strong>Movimientos:</strong></h6>
           <div class="primera">
-            <p>{{poke.moves[0].move.name | ponerComa}} </p>
-            <p>{{poke.moves[1]?.move.name}}</p>
+            <p>{{poke.moves[0].move.name}}</p><span *ngIf="poke.moves[1]?.move.name">,</span>
+            <p> {{poke.moves[1]?.move.name}}</p>
           </div>
           <div class=" segunda">
-            <p>{{poke.moves[2]?.move.name | ponerComa}} </p>
+            <p>{{poke.moves[2]?.move.name}}</p><span *ngIf="poke.moves[3]?.move.name">,</span>
             <p> {{poke.moves[3]?.move.name}}</p>
 
           </div>
