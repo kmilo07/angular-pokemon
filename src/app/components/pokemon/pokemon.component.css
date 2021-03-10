@@ -74,9 +74,11 @@ h3 {
 }
 .primera p {
   display: inline-block;
+  margin-right: 10px;
 }
 .segunda p {
   display: inline-block;
+  margin-right: 10px;
 }
 
 .paginas {

@@ -74,6 +74,24 @@ export class PokemonComponent implements OnInit {
                   .subscribe((respuesta : any) =>{
                     repuesta.moves[0].move.name = respuesta.names[5].name;
                   })
+                  if(repuesta.moves[1]?.move.url){
+                    this.pokemonService.buscarPoderesPokemones(repuesta.moves[1].move.url)
+                    .subscribe((respuesta : any) =>{
+                      repuesta.moves[1].move.name = respuesta.names[5].name;
+                  })
+                  }
+                  if(repuesta.moves[2]?.move.url){
+                    this.pokemonService.buscarPoderesPokemones(repuesta.moves[2].move.url)
+                    .subscribe((respuesta : any) =>{
+                      repuesta.moves[2].move.name = respuesta.names[5].name;
+                  })
+                  }
+                  if(repuesta.moves[3]?.move.url){
+                    this.pokemonService.buscarPoderesPokemones(repuesta.moves[3].move.url)
+                    .subscribe((respuesta : any) =>{
+                      repuesta.moves[3].move.name = respuesta.names[5].name;
+                  })
+                  }
                 });
               this.pokemones.push(repuesta);
             });
