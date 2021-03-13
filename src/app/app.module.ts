@@ -6,10 +6,9 @@ import { AppComponent } from "./app.component";
 import { FooterComponent } from "./components/shared/footer/footer.component";
 import { NavbarComponent } from "./components/shared/navbar/navbar.component";
 import { PokemonComponent } from "./components/pokemon/pokemon.component";
-import { HomeComponent } from "./components/home/home.component";
+
 import { HttpClientModule } from "@angular/common/http";
 import { PokemonService } from "./services/pokemon.service";
-import Swal from "sweetalert2";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
@@ -17,8 +16,7 @@ import Swal from "sweetalert2";
     AppComponent,
     FooterComponent,
     NavbarComponent,
-    PokemonComponent,
-    HomeComponent
+    PokemonComponent
   ],
   providers: [PokemonService],
   bootstrap: [AppComponent]
